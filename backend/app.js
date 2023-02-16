@@ -27,7 +27,7 @@ app.use(cors);
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post(
-  '/api/signin',
+  '/signin',
   celebrate({
     body: Joi.object().keys({
       email: Joi.string().required().email(),
@@ -38,7 +38,7 @@ app.post(
 );
 
 app.post(
-  '/api/signup',
+  '/signup',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().min(2).max(30),
