@@ -15,8 +15,6 @@ const { PORT = 3000 } = process.env;
 
 const app = express();
 
-app.use('/api', routes) // routes is our routes file above
-
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
