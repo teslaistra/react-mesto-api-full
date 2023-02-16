@@ -3,6 +3,8 @@ const allowedCors = [
   'https://praktikum.teslaistra.ru',
   'http://praktikum.teslaistra.ru',
   'localhost:3000',
+  'http://praktikum.teslaistra.ru/api',
+  'https://praktikum.teslaistra.ru/api',
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
