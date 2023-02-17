@@ -4,6 +4,9 @@ const allowedCors = [
   'http://praktikum.teslaistra.ru',
   'localhost:3000',
   'http://localhost:3000',
+  'http://localhost:3001',
+  'localhost:3001',
+  'http://192.168.1.10:3001',
 ];
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
@@ -11,6 +14,7 @@ module.exports = (req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
   const requestHeaders = req.headers['access-control-request-headers'];
+  console.log(origin);
 
   if (method === 'OPTIONS') {
     // разрешаем кросс-доменные запросы любых типов (по умолчанию)
@@ -20,6 +24,7 @@ module.exports = (req, res, next) => {
     res.end();
   }
   if (allowedCors.includes(origin)) {
+    console.log('origin', origin);
     res.header('Access-Control-Allow-Origin', origin);
   }
 

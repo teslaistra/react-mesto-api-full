@@ -9,20 +9,22 @@ const { createUser, login } = require('./controllers/users');
 const Error404 = require('./errors/404-error');
 const { regexURL } = require('./utils/constants');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
+
+app.use(cors);
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
 });
 app.use(express.json());
 
-// app.use(cors);
-
 app.use(requestLogger); // подключаем логгер запросов
+
+// app.use('*', (req, res, next) => { console.log(req); next(); });
 
 app.post(
   '/api/signin',
@@ -70,7 +72,6 @@ app.use(errors());
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
-
   res.status(statusCode).send({
     message: statusCode === 500 ? 'На сервере произошла ошибка' : message,
   });
