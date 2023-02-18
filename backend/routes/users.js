@@ -6,12 +6,12 @@ const {
   getUsers, getUser, updateUser, updateAvatar, getMe,
 } = require('../controllers/users');
 
-userRoutes.get('/users', getUsers);
+userRoutes.get('/api/users', getUsers);
 
-userRoutes.get('/users/me', getMe);
+userRoutes.get('/api/users/me', getMe);
 
 userRoutes.get(
-  '/users/:id',
+  '/api/users/:id',
   celebrate({
     params: Joi.object().keys({
       id: Joi.string().length(24).hex(),
@@ -21,7 +21,7 @@ userRoutes.get(
 );
 
 userRoutes.patch(
-  '/users/me',
+  '/api/users/me',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
@@ -32,7 +32,7 @@ userRoutes.patch(
 );
 
 userRoutes.patch(
-  '/users/me/avatar',
+  '/api/users/me/avatar',
   celebrate({
     body: Joi.object().keys({
       avatar: Joi.string().required().regex(regexURL),
