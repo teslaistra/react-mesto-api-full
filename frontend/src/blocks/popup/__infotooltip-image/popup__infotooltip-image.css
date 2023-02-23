@@ -1,0 +1,10 @@
+.popup__infotooltip-image {
+  width: 120px;
+  height: 120px;
+  background-position: center;
+  background-repeat: cover;
+  margin: 60px 0 32px;
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 32px;
+}
