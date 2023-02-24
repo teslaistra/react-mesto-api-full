@@ -5,7 +5,7 @@ const ValidationError = require('../errors/400-error');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .populate(['owner', 'likes'])
+    .populate(['likes'])
     .then((cards) => res.send({ data: cards }))
     .catch(next);
 };
@@ -36,7 +36,10 @@ module.exports.verifyOwnership = (req, res, next) => {
       }
     })
     .catch((err) => {
-      next(err);
+      if (err.name === 'CastError') {
+        return next(new ValidationError('Передан некорретный Id'));
+      }
+      return next(err);
     });
 };
 
@@ -58,7 +61,7 @@ module.exports.likeCard = (req, res, next) => {
     req.params.cardId,
     { $addToSet: { likes: req.user._id } },
     { new: true },
-  ).populate(['likes', 'owner']).then((card) => {
+  ).populate(['likes']).then((card) => {
     if (card) {
       res.send({ card });
     } else {

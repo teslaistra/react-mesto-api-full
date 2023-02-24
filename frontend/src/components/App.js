@@ -203,13 +203,18 @@ function App() {
       .register(data)
       .then((res) => {
         console.log(res)
-        if (res.data._id) {
+        if (res._id) {
+          localStorage.setItem("jwt", res.token);
+          
+          console.log( {
+            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json'
+          });
           setLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           setIsRegisterSuccess(true);
           setIsInfoTooltipOpen(true);
-          localStorage.setItem("jwt", res.token);
-          history.push("/");
+          history.push("/signin");
         }
       })
       .catch((err) => {

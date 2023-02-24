@@ -17,8 +17,6 @@ module.exports = (req, res, next) => {
   } catch (err) {
     return next(new UnAuthorizedError('Необходима авторизация'));
   }
-  console.log(authorization);
-  console.log(payload);
   req.user = payload; // записываем пейлоуд в объект запроса
 
   return next(); // пропускаем запрос дальше

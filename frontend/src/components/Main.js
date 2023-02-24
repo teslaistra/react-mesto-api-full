@@ -23,6 +23,7 @@ function Main({
     />
   ));
 
+  console.log(userInfo);
   return (
     <main className="content">
       <section className="profile">
