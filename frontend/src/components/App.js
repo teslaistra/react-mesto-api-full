@@ -83,7 +83,6 @@ function App() {
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        console.log(newCard.card);
         newCard = newCard.card;
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -109,7 +108,6 @@ function App() {
     api
       .setUserInfo(data)
       .then((data) => {
-        console.log(data);
         data = data.data;
         setCurrentUser(data);
         closeAllPopups();
@@ -202,14 +200,8 @@ function App() {
     auth
       .register(data)
       .then((res) => {
-        console.log(res)
         if (res._id) {
           localStorage.setItem("jwt", res.token);
-          
-          console.log( {
-            Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-            'Content-Type': 'application/json'
-          });
           setLoggedIn(true);
           setEmail(res.email);
           setIsRegisterSuccess(true);
@@ -218,7 +210,6 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
         setIsRegisterSuccess(false);
         setIsInfoTooltipOpen(true);
       });

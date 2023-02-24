@@ -2,7 +2,6 @@
 export const BASE_URL = "http://localhost:3000/api/";
 
 export const register = ({ email, password }) => {
-  console.log(email, password);
   return fetch(`${BASE_URL}signup`, {
     method: "POST",
     headers: {

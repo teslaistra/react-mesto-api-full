@@ -13,10 +13,6 @@ class Api {
   }
 
   getInitialCards() {
-    console.log( {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
-      'Content-Type': 'application/json'
-    });
     return fetch(`${this._baseUrl}/cards`, { headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json'
