@@ -105,6 +105,6 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: "https://praktikum.teslaistra.ru/api",
-  // baseUrl: "http://localhost:3000/api",
+  // baseUrl: "https://praktikum.teslaistra.ru/api",
+  baseUrl: "http://localhost:3000/api",
 });

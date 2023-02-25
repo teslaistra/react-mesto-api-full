@@ -45,7 +45,7 @@ function App() {
 
   React.useEffect(() => {
     const jwt = localStorage.getItem("jwt");
-    if (jwt) {
+    if (jwt !== 'undefined') {
       auth
         .getContent(jwt)
         .then((res) => {
@@ -202,8 +202,8 @@ function App() {
       .then((res) => {
         if (res._id) {
           localStorage.setItem("jwt", res.token);
-          setLoggedIn(true);
-          setEmail(res.email);
+          // setLoggedIn(true);
+          // setEmail(res.email);
           setIsRegisterSuccess(true);
           setIsInfoTooltipOpen(true);
           history.push("/signin");

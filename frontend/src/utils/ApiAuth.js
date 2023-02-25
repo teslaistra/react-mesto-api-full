@@ -1,5 +1,5 @@
-export const BASE_URL = "https://praktikum.teslaistra.ru/api/";
-// export const BASE_URL = "http://localhost:3000/api/";
+// export const BASE_URL = "https://praktikum.teslaistra.ru/api/";
+export const BASE_URL = "http://localhost:3000/api/";
 
 export const register = ({ email, password }) => {
   return fetch(`${BASE_URL}signup`, {
